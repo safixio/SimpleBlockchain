@@ -12,6 +12,7 @@ namespace SimpleBlockchain.Service.Implementations
     {
         private CancellationTokenSource _cancellationTokenSource;
         private bool _isStarted;
+        private const int MinerDelay = 10000;
 
         public Miner()
         {
@@ -23,7 +24,7 @@ namespace SimpleBlockchain.Service.Implementations
         {
             if(!_isStarted)
             {
-                Task.Run(() => GenerateNewBlock(), _cancellationTokenSource.Token);
+                Task.Run(() => DoMine(), _cancellationTokenSource.Token);
                 _isStarted = true;
             }
         }
@@ -34,9 +35,13 @@ namespace SimpleBlockchain.Service.Implementations
             _isStarted = false;
         }
 
-        private void GenerateNewBlock()
+        private void DoMine()
         {
+            while(true)
+            {
 
+                Thread.Sleep(MinerDelay);
+            }
         }
     }
 }

@@ -8,6 +8,13 @@ namespace SimpleBlockchain.Model
 {
     public class Transaction
     {
+        public Transaction() { }
+        public Transaction(string from, string to, string amount)
+        {
+            Amount = amount;
+            From = from;
+            To = to;
+        }
         public string Amount { get; set; }
         public string From { get; set; }
         public string To { get; set; }

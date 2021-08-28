@@ -31,7 +31,15 @@ namespace SimpleBlockchain.Service.Implementations
         {
             lock(_object)
             {
-                return _transactions;
+                return _transactions.ToList();
+            }
+        }
+
+        public void ClearTransactions()
+        {
+            lock(_object)
+            {
+                _transactions.Clear();
             }
         }
     }

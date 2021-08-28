@@ -12,5 +12,7 @@ namespace SimpleBlockchain.Service.Interfaces
         void AddTransaction(Transaction transaction);
 
         List<Transaction> GetTransactions();
+
+        void ClearTransactions();
     }
 }

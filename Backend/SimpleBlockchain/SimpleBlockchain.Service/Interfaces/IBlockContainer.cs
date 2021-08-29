@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBlockchain.Service.Interfaces
 {
-    interface IBlockContainer
+    public interface IBlockContainer
     {
         public void AddBlock(Block block);
 

@@ -1,18 +1,16 @@
-﻿using System;
+﻿using SimpleBlockchain.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace SimpleBlockchain.Service.Interfaces
 {
-    interface ITransactionPool
+    public interface ITransactionPool
     {
         void AddTransaction(Transaction transaction);
 
         List<Transaction> GetTransactions();
-
-        void ClearTransactions();
     }
 }

@@ -1,10 +1,10 @@
-﻿using SimpleBlockchain.Service.Interfaces;
+﻿using SimpleBlockchain.Model;
+using SimpleBlockchain.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace SimpleBlockchain.Service.Implementations
 {
@@ -31,15 +31,9 @@ namespace SimpleBlockchain.Service.Implementations
         {
             lock(_object)
             {
-                return _transactions.ToList();
-            }
-        }
-
-        public void ClearTransactions()
-        {
-            lock(_object)
-            {
+                List<Transaction> transactions = _transactions.ToList();
                 _transactions.Clear();
+                return transactions;
             }
         }
     }

@@ -39,7 +39,7 @@ namespace SimpleBlockchain.Service.Implementations
         {
             lock (_object)
             {
-                return _blockLists.Last();
+                return _blockLists.LastOrDefault();
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBlockchain.Service.Interfaces
 {
-    interface IMiner
+    public interface IMiner
     {
         void Start();
         void Stop();

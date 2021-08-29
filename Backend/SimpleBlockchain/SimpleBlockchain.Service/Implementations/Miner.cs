@@ -16,12 +16,14 @@ namespace SimpleBlockchain.Service.Implementations
         private bool _isStarted;
         private IBlockContainer _blockContainer;
         private ITransactionPool _transactionPool;
+        private IHashService _hashService;
         private Setting _setting;
 
-        public Miner(IBlockContainer blockContainer, ITransactionPool transactionPool, IOptions<Setting> setting)
+        public Miner(IBlockContainer blockContainer, ITransactionPool transactionPool, IHashService hashService, IOptions<Setting> setting)
         {
             _transactionPool = transactionPool;
             _blockContainer = blockContainer;
+            _hashService = hashService;
             _cancellationTokenSource = new CancellationTokenSource();
             _isStarted = false;
             _setting = setting.Value;
@@ -70,7 +72,29 @@ namespace SimpleBlockchain.Service.Implementations
                 Transactions = transactions
             };
 
+            string transactionsHash = _hashService.CalculateHash(newBlock.Transactions);
+            long nonce = -1;
+            string hashDifficultyString = GetMiningDifficultyString();
+            string hash = "";
+            do
+            {
+                nonce++;
+                var rowData = newBlock.Index + newBlock.PrevHash + newBlock.TimeStamp.ToString() + nonce + transactionsHash;
+                hash = _hashService.CalculateHash(_hashService.CalculateHash(rowData));
+            }
+            while (!hash.StartsWith(hashDifficultyString));
             _blockContainer.AddBlock(newBlock);
+        }
+
+        private string GetMiningDifficultyString()
+        {
+            int numberOfZeros = (_setting.MiningDifficulty > 0) ? _setting.MiningDifficulty : 4;
+            StringBuilder stringBuilder = new StringBuilder();
+            for(int i = 0; i <= numberOfZeros; i++)
+            {
+                stringBuilder.Append("0");
+            }
+            return stringBuilder.ToString();
         }
     }
 }

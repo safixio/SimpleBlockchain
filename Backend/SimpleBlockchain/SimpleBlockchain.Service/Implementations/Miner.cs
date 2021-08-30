@@ -48,7 +48,7 @@ namespace SimpleBlockchain.Service.Implementations
         {
             while(true)
             {
-                GenerateBlock();
+                if (!_transactionPool.IsEmpty()) GenerateBlock();
                 Thread.Sleep(_setting.MinerDelay);
             }
         }
@@ -68,7 +68,7 @@ namespace SimpleBlockchain.Service.Implementations
             {
                 Index = (lastBlock?.Index) + 1 ?? 0,
                 TimeStamp = DateTime.UtcNow,
-                PrevHash = lastBlock?.PrevHash ?? "",
+                PrevHash = lastBlock?.Hash ?? "",
                 Transactions = transactions
             };
 
@@ -83,6 +83,8 @@ namespace SimpleBlockchain.Service.Implementations
                 hash = _hashService.CalculateHash(_hashService.CalculateHash(rowData));
             }
             while (!hash.StartsWith(hashDifficultyString));
+            newBlock.Nonce = nonce;
+            newBlock.Hash = hash;
             _blockContainer.AddBlock(newBlock);
         }
 

@@ -36,5 +36,13 @@ namespace SimpleBlockchain.Service.Implementations
                 return transactions;
             }
         }
+
+        public bool IsEmpty()
+        {
+            lock (_object)
+            {
+                return !_transactions.Any();
+            }
+        }
     }
 }

@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SimpleBlockchain.Model\SimpleBlockchain.Model.csproj" />
     <ProjectReference Include="..\SimpleBlockchain.Service\SimpleBlockchain.Service.csproj" />
   </ItemGroup>

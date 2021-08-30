@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SimpleBlockchain.WebAPI.Common.Extensions;
 
 namespace SimpleBlockchain.WebAPI
 {
@@ -49,6 +50,8 @@ namespace SimpleBlockchain.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SimpleBlockchain.WebAPI v1"));
             }
+
+            app.ConfigureExceptionHandler();
 
             app.UseRouting();
 

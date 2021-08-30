@@ -24,7 +24,7 @@ namespace SimpleBlockchain.WebAPI.Controllers
             return Ok("Success");
         }
 
-        [HttpPost("get-all")]
+        [HttpGet("get-all")]
         public IActionResult GetAll()
         {
             List<Transaction> transactions = _transactionPool.GetTransactions();

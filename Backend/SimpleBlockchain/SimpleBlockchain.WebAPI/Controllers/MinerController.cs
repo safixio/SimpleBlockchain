@@ -17,14 +17,14 @@ namespace SimpleBlockchain.WebAPI.Controllers
             _miner = miner;
         }
 
-        [HttpGet("start")]
+        [HttpPost("start")]
         public IActionResult Start()
         {
             _miner.Start();
             return Ok("Success");
         }
 
-        [HttpGet("stop")]
+        [HttpPost("stop")]
         public IActionResult Stop()
         {
             _miner.Stop();

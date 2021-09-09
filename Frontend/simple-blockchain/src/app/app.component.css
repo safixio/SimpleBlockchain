@@ -1,2 +1,27 @@
-@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+#nav {
+    background: #263238;
+    color: #fafafa;
+    text-align: center;
+    padding: 6px;
+}
 
+#nav a {
+    color: #ffeb3b;
+    text-decoration: none;
+}
+
+#title {
+    width: 500px;
+    display: block;
+    margin: 15px auto;
+    border: 3px dashed #673ab7;
+    padding: 10px;
+}
+
+#title span {
+    color: #673ab7;
+}
+
+#title h6 {
+    margin: 0;
+}

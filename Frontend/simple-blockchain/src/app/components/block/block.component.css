@@ -1,0 +1,32 @@
+.block {
+    border-top: 7px solid #673ab7;
+    width: 100%;
+    color: #673ab7;
+    padding: 10px;
+    background-color: #ede7f6;
+    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin: 0px 0px 5px 0px;
+    border: 1px solid #673ab7;
+    padding: 6px;
+    background: #fafafa;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+span {
+    font-weight: lighter;
+}
+
+#show-transaction-btn {
+    display: block;
+    margin: auto;
+    border: 1px solid #673ab7;
+    background: #673ab7;
+    color: #fafafa;
+    padding: 6px;
+    font-size: 14px;
+}
